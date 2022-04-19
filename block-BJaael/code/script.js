@@ -19,7 +19,7 @@ function random() {
     let r = Math.floor(Math.random() * 255 + 1);
     let g = Math.floor(Math.random() * 255 + 1);
     let b = Math.floor(Math.random() * 255 + 1);
-    let color = `rgb(${r},${g},${b})`;
+    let color = `rgba(${r},${g},${b})`;
 
     boxes[i].style.backgroundColor = color;
     boxes[i].innerText = num;
@@ -27,3 +27,4 @@ function random() {
 }
 
 container.addEventListener("mousemove", random);
+
