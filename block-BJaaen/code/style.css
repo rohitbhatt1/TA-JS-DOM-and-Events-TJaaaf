@@ -107,7 +107,12 @@ li i {
     margin-top: 0.6rem;
 }
 .selected{
-    border:1px solid rgb(250, 74, 10);
+    border:2px solid rgb(250, 74, 10);
+    padding: 0px 5px;
+}
+.selected:hover{
+    border-radius: 60%;
+    background-color: #bb250b;
 }
 button{
     background-color: black;
