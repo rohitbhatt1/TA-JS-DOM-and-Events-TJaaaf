@@ -4,7 +4,7 @@ firstBoxes.forEach((box, index) => {
     event.target.innerText = index + 1;
 
     setTimeout(() => {
-      event.innerText = "";
+      event.target.innerText = "";
     }, 5000);
   });
 });
@@ -16,6 +16,6 @@ secondBox.addEventListener("click", (event) => {
   event.target.innerText = text;
 
   setTimeout(() => {
-    event.innerText = "";
+    event.target.innerText = "";
   }, 5000);
 });
