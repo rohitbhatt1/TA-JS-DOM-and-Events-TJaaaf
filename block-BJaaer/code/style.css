@@ -107,6 +107,8 @@ align-items: center;
   font-size: 18px;
   line-height: 1.5;
   position:relative;
+  /* top: 0px; */
+  left: 400px;
   width:500px;
 }
 
