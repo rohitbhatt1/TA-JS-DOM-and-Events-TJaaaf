@@ -20,7 +20,12 @@ function handleSubmit(event) {
   });
   console.log(movies);
 
-  // Create UI
+  function handleInput(event) {
+  let id = event.target.id;
+  
+  movies[id].watched =  !movies[id].watched;
+}
+  // Create UI  
   ul.innerHTML = "";
   movies.forEach((movie, i) => {
     let li = document.createElement("li");
@@ -32,9 +37,10 @@ function handleSubmit(event) {
     checkbox.id = i;
     label.for = i;
     checkbox.checked = movies.watched;
+    checkbox.addEventListener('change', handleInput)
     label.innerText = movie.name;
     icon.style.color = "red";
-    icon.style.marginLeft = "2rem"
+    icon.style.marginLeft = "2rem";
     icon.setAttribute("data-id", i);
     icon.classList.add("fas", "fa-times");
     li.append(checkbox, label, icon);
