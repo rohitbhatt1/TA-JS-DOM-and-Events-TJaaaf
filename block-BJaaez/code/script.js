@@ -1,4 +1,3 @@
-
   
 let inputText = document.querySelector("#text");
 
@@ -34,7 +33,7 @@ function createUI() {
     let div2 = document.createElement("div");
     div2.classList.add("flex");
     let p2 = document.createElement("p");
-    p2.innerText = allTodos.length + " items left";
+    p2.innerText = allTodos.length + " tasks ";
     let button1 = document.createElement("button");
     button1.innerText = "ALL";
     button1.addEventListener("click", handleAll);
@@ -156,5 +155,5 @@ function showVal(frm) {
         }
     }
     alert(arr);
-    return arr
+    return arr;
 }
