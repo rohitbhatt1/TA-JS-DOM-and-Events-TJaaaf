@@ -23,4 +23,4 @@ function clock() {
   hourHand.style.transform = `rotate(${hoursDeg}deg)`;
 }
 
-setInterval(clock, 10);
+setInterval(clock, 1000);
