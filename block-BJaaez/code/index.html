@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chrome Extension</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Todo List</h1>
+        <input type="text" id="task" name="task" placeholder="Enter your task here">
+      <div>
+        <ul id="todo_list">
+          
+        </ul>
+      </div>
+      <footer>
+        <div class="flex"> 
+          <button id="all_tasks">ALL TASKS</button>
+          <button id="pending_tasks">PENDING TASKS</button>
+          <button id="completed_tasks">COMPLETED TASKS</button>
+          <button id="clear_tasks">CLEAR ALL TASKS</button>
+        </div>
+      </footer>
+    </div>
+    <script src="./script.js"></script>
+  </body>
+</html>
