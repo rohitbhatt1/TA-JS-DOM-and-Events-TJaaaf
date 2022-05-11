@@ -5,7 +5,7 @@ let pending = document.querySelector('#pending_tasks');
 let completed = document.querySelector('#completed_tasks');
 let clear = document.querySelector('#clear_tasks');
 
-let allTasks = [ ];
+let allTasks = [];
 
 function createUI(arr = []) {
     list.innerHTML = ``;
@@ -27,7 +27,7 @@ function createUI(arr = []) {
         let del = document.createElement('span');
         del.innerText = `❌`;   
         del.addEventListener('click', ()=>handleDelete(id))
-
+        
         li.append(para,del);
         li.classList.add('todo')   
 
