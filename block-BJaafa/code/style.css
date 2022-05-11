@@ -1,0 +1,311 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)*/
+
+   html,
+   body,
+   div,
+   span,
+   applet,
+   object,
+   iframe,
+   h1,
+   h2,
+   h3,
+   h4,
+   h5,
+   h6,
+   p,
+   blockquote,
+   pre,
+   a,
+   abbr,
+   acronym,
+   address,
+   big,
+   cite,
+   code,
+   del,
+   dfn,
+   em,
+   img,
+   ins,
+   kbd,
+   q,
+   s,
+   samp,
+   small,
+   strike,
+   strong,
+   sub,
+   sup,
+   tt,
+   var,
+   b,
+   u,
+   i,
+   center,
+   dl,
+   dt,
+   dd,
+   ol,
+   ul,
+   li,
+   fieldset,
+   form,
+   label,
+   legend,
+   table,
+   caption,
+   tbody,
+   tfoot,
+   thead,
+   tr,
+   th,
+   td,
+   article,
+   aside,
+   canvas,
+   details,
+   embed,
+   figure,
+   figcaption,
+   footer,
+   header,
+   hgroup,
+   menu,
+   nav,
+   output,
+   ruby,
+   section,
+   summary,
+   time,
+   mark,
+   audio,
+   video {
+     margin: 0;
+     padding: 0;
+     border: 0;
+     font-size: 100%;
+     font: inherit;
+     vertical-align: baseline;
+   }
+   
+   /* HTML5 display-role reset for older browsers */
+   
+   article,
+   aside,
+   details,
+   figcaption,
+   figure,
+   footer,
+   header,
+   hgroup,
+   menu,
+   nav,
+   section {
+     display: block;
+   }
+   
+   body {
+     line-height: 1;
+   }
+   
+   ol,
+   ul {
+     list-style: none;
+   }
+   
+   blockquote,
+   q {
+     quotes: none;
+   }
+   
+   blockquote:before,
+   blockquote:after,
+   q:before,
+   q:after {
+     content: "";
+     content: none;
+   }
+   
+   table {
+     border-collapse: collapse;
+     border-spacing: 0;
+   }
+   
+
+/*---[Resets Import]---*/
+
+@import url(../stylesheets/resets.css);
+
+/*---[Custom Styles]---*/
+
+/*Variables*/
+:root {
+  --primary: #081b24;
+  --darktext: #000000;
+  --lighttext: rgb(160, 160, 160);
+}
+
+/*Global*/
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  font-size: 2.5rem;
+  font-weight: 500;
+  line-height: 1.5;
+  min-height: 100vh;
+  background-color: var(--primary);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.padding {
+  padding: 5rem 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+/*Flex*/
+
+.flex {
+  display: flex;
+  align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+/*Main*/
+
+.clock {
+  color: #ffffff;
+  width: 500px;
+  height: 500px;
+  border: 6px solid #1d1b1b;
+  border-radius: 50%;
+  background-color: rgb(3, 39, 39);
+  box-shadow: 0 -15px 15px rgba(255, 255, 255, 0.05),
+    inset 0 -15px 15px rgba(255, 255, 255, 0.05),
+    0 15px 15px rgba(0, 0, 0, 0.05), inset 0 -15px 15px rgba(56, 12, 12, 0.05);
+  position: relative;
+}
+
+.clock .number {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  text-align: center;
+  border:1px solid red;
+}
+
+.clock .number1 {
+  transform: rotate(30deg);
+}
+.clock .number2 {
+  transform: rotate(60deg);
+}
+.clock .number3 {
+  transform: rotate(90deg);
+}
+.clock .number4 {
+  transform: rotate(120deg);
+}
+.clock .number5 {
+  transform: rotate(150deg);
+}
+.clock .number6 {
+  transform: rotate(180deg);
+}
+.clock .number7 {
+  transform: rotate(210deg);
+}
+.clock .number8 {
+  transform: rotate(240deg);
+}
+.clock .number9 {
+  transform: rotate(270deg);
+}
+.clock .number10 {
+  transform: rotate(300deg);
+}
+.clock .number11 {
+  transform: rotate(330deg);
+}
+.clock .number12 {
+    transform: rotate(360deg);
+  }
+.clock .disc {
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: #ffffff;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border: 5px solid #12465d;
+  transform: translate(-50%, -50%);
+  z-index: 99;
+}
+
+.clock .hand {
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  transform-origin: bottom;
+}
+
+.clock .hour {
+  width: 10px;
+  height: 33%;
+  background-color: rgb(255, 255, 255);
+  transform: translateX(-50%);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  transform: translateX(-50%) rotate(30deg);
+}
+
+.clock .minute {
+  width: 5px;
+  height: 38%;
+  background-color: rgb(233, 100, 86);
+  transform: translateX(-50%);
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  transform: translateX(-50%) rotate(0deg);
+}
+
+.clock .second {
+  width: 2px;
+  height: 44%;
+  background-color: rgb(255, 0, 0);
+  transform: translateX(-50%);
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+  transform: translateX(-50%) rotate(45deg);
+  z-index: 98;
+}
+span{ 
+
+    position: absolute;
+    /* width: 100%; */
+    /* height: 100%; */
+    border-radius: 50%;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%) rotate(10deg);
+    text-align: center;
+    /* border:1px solid red; */
+}
