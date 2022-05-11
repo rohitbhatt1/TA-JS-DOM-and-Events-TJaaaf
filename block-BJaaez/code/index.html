@@ -9,12 +9,20 @@
   <body>
     <div class="container">
       <h1>Todo List</h1>
+        <input type="text" id="task" name="task" placeholder="Enter your task here">
       <div>
-        <input type="text" id="text" name="todo" placeholder="What needs to be done?">
-        <ul>
+        <ul id="todo_list">
+          
         </ul>
       </div>
-      <div class="detail"></div>
+      <footer>
+        <div class="flex"> 
+          <button id="all_tasks">ALL TASKS</button>
+          <button id="pending_tasks">PENDING TASKS</button>
+          <button id="completed_tasks">COMPLETED TASKS</button>
+          <button id="clear_tasks">CLEAR ALL TASKS</button>
+        </div>
+      </footer>
     </div>
     <script src="./script.js"></script>
   </body>

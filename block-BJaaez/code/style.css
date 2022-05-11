@@ -33,11 +33,7 @@ html {
     box-sizing: border-box;
   }
     
-  button {
-    padding: 0.5rem;
-    border-radius: .5rem;
-    cursor: pointer;
-  }
+  
   
   input[type='text'] {
     width: 100%;
@@ -47,46 +43,50 @@ html {
     border: 2px solid rgba(0, 0, 0, 0.2);
     border-radius: .5rem;
   }
-  
-  h1 {
-   text-align: center;
-   font-size: 5rem;
-   font-weight: 600;
-   margin-top: 5rem;
-   color: #b402fa;
-  }
     
   .container {
-    max-width: 400px;
-    margin: 0 auto;
+    max-width: 700px;
+    margin: 70px auto;
+    /* padding: 40px; */
   }
   
+  h1{
+    font-size: 74px;
+    text-align: center;
+    font-weight: 700;
+  }
   .flex {
     display: flex;
     justify-content: space-between;
-    align-items: baseline;
+    align-items: center;
   }
-  p {
-    margin-top: 1rem;
-    color: black;
-  }
-  button{
-      font-size:1rem;
-      font-weight: 900;
-      margin: 12px 0 ;
-  }
-
-  button:hover{
-      cursor:all-scroll;
-      color: rgb(8, 44, 245);
-      background-color: aqua;
-  }
-
-  span {
-    color: red;
-    font-size: 1rem;
+  
+  .todo{
     display: flex;
-    align-items: baseline;
-    font-weight: 700;
-    cursor: pointer;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin: 30px 0;
   }
+button{
+  padding:10px;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight:900;
+  background-color: aliceblue;
+  color:#000000;
+}
+button:hover{
+  cursor: pointer;
+  background-color: rgb(0, 102, 255);
+  color: azure;
+  padding:10px;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight:900;
+}
+.check{
+ margin-right: 10px;
+ width:20px ;
+ height:20px ;
+}

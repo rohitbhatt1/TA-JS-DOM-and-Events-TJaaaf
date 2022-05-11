@@ -1,159 +1,95 @@
-  
-let inputText = document.querySelector("#text");
+let task = document.querySelector('#task');
+let list = document.querySelector('#todo_list');
+let all = document.querySelector('#all_tasks');
+let pending = document.querySelector('#pending_tasks');
+let completed = document.querySelector('#completed_tasks');
+let clear = document.querySelector('#clear_tasks');
 
-let root = document.querySelector("ul");
+let allTasks = [ ];
 
-let parent = document.querySelector(".detail");
+function createUI(arr = []) {
+    list.innerHTML = ``;
+    arr.map((todo)=>{      
+       let id = todo.id;
+        
+        let li = document.createElement('li');
+        let para = document.createElement('p');
+        para.classList.add('flex');
+        let checkbox = document.createElement('input');
+        checkbox.type = "checkbox";
+        checkbox.classList.add('check');
+        checkbox.checked = todo.isCompleted;
+        checkbox.addEventListener('change', ()=>handleChange(id))
 
-let allTodos = JSON.parse(localStorage.getItem("todos")) || [];
+        let todoTitle = document.createElement('span');
+        todoTitle.innerText = todo.title;
+        para.append(checkbox, todoTitle);
+        let del = document.createElement('span');
+        del.innerText = `❌`;   
+        del.addEventListener('click', ()=>handleDelete(id))
 
-function createUI() {
-    root.innerHTML = "";
-    parent.innerHTML = "";
-    allTodos.forEach((todo, index) => {
-        let li = document.createElement("li");
-        li.classList.add("flex");
-        let div = document.createElement("div");
-        div.classList.add("flex");
-        let input = document.createElement("input");
-        input.type = "checkbox";
-        input.setAttribute("data-id", index);
-        input.checked = todo.isDone;
-        input.addEventListener("input", handleToggle);
-        let p = document.createElement("p");
-        p.innerText = todo.name;
-        let span = document.createElement("span");
-        span.innerText = "X";
-        span.setAttribute("data-id", index);
-        span.addEventListener("click", handleDelete);
-        div.append(input, p);
-        li.append(div, span);
-        root.append(li);
-    });
-    let div2 = document.createElement("div");
-    div2.classList.add("flex");
-    let p2 = document.createElement("p");
-    p2.innerText = allTodos.length + " tasks ";
-    let button1 = document.createElement("button");
-    button1.innerText = "ALL";
-    button1.addEventListener("click", handleAll);
-    let button2 = document.createElement("button");
-    button2.innerText = "Active";
-    button2.addEventListener("click", handleActive);
-    let button = document.createElement("button");
-    button.innerText = "clear";
-    button.addEventListener("click", handleClear);
-    let button3 = document.createElement("button");
-    button3.innerText = "Completed";
-    button3.addEventListener("click", handleComplete);
-    div2.append(p2, button1, button2,button, button3);
-    parent.append(div2);
+        li.append(para,del);
+        li.classList.add('todo')   
+
+        list.append(li); 
+    })
 }
 
-function handleToggle(event) {
-    let id = event.target.dataset.id;
-    allTodos[id].isDone = !allTodos[id].isDone;
-    createUI();
+function  addTask(event){
+if(event.keyCode === 13 && event.target.value !== ""){
+    let todo = {};
+    todo.id= Date.now();
+    todo.title = event.target.value;
+    todo.isCompleted = false;
+    allTasks.push(todo);
+    createUI(allTasks);
+    event.target.value='';
+}
 }
 
-
-//clear
-function handleClear() {
-    root.innerHTML = "";
-    allTodos.splice(0, allTodos.length);
-    allTodos.forEach((todo, index) => {
-      display(todo, index);
-    });
-    createUI();
-  }
-
-
-function handleDelete(event) {
-    let id = event.target.dataset.id;
-    allTodos.splice(id, 1);
-    createUI();
+function handleChange(id){
+    let ind = allTasks.findIndex((elem)=>{
+        return elem.id === id;
+    })
+   allTasks[ind].isCompleted = !allTasks[ind].isCompleted;
+    createUI(allTasks);
 }
 
-function handleAll() {
-    createUI();
+function handleDelete(id){
+    let ind = allTasks.findIndex((elem)=>{
+        return elem.id === id;
+    })
+    allTasks.splice(ind, 1);
+    createUI(allTasks);
 }
 
-function handleActive() {
-    var arrActive = [];
-    for (var i in allTodos) {
-        if (!allTodos[i].isDone) {
-            arrActive.push(allTodos[i]);
-        }
-    }
-    duplicateUI(arrActive);
+function allTasksList() {
+ createUI(allTasks);
 }
 
-function handleComplete() {
-    var arrComplete = [];
-    for (var i in allTodos) {
-        if (allTodos[i].isDone) {
-            arrComplete.push(allTodos[i]);
-        }
-    }
-    duplicateUI(arrComplete);
+function pendingList(){
+    let newArr = allTasks.filter(task=>{
+        return task.isCompleted === false;
+    })
+    createUI(newArr);
 }
 
-function duplicateUI(arr) {
-    root.innerHTML = "";
-    arr.forEach((todo, index) => {
-        let li = document.createElement("li");
-        li.classList.add("flex");
-        let div = document.createElement("div");
-        div.classList.add("flex");
-        let input = document.createElement("input");
-        input.type = "checkbox";
-        input.setAttribute("data-id", index);
-        input.checked = todo.isDone;
-        input.addEventListener("input", handleToggle);
-        let p = document.createElement("p");
-        p.innerText = todo.name;
-        let span = document.createElement("span");
-        span.innerText = "X";
-        span.setAttribute("data-id", index);
-        span.addEventListener("click", handleDelete);
-        div.append(input, p);
-        li.append(div, span);
-        root.append(li);
-    });
+function completedList(){
+    let newArr = allTasks.filter(task=>{
+        return task.isCompleted === true;
+    })
+    createUI(newArr);
 }
 
-
-function handleInput(event) {
-    if (event.keyCode === 13 && event.target.value !== "") {
-        let todo = { name: event.target.value, isDone: false,};
-        allTodos.push(todo);
-        event.target.value = "";
-        localStorage.setItem("todo", JSON.stringify(allTodos));
-        createUI();
-    }
+function clearList(){
+   allTasks.length = 0;
+   createUI(allTasks);
 }
 
-inputText.addEventListener("keyup", handleInput);
+task.addEventListener('keyup' , addTask);
+all.addEventListener("click", ()=>allTasksList())
+pending.addEventListener("click", ()=>pendingList())
+completed.addEventListener("click", ()=>completedList())
+clear.addEventListener("click", ()=>clearList())
 
-
-
-
-function checkedAll() {
-    var c = document.getElementsByName("rohit");
-    checked = document.getElementById('causelist_month').checked;
-
-    for (var i = 0; i < c.length; i++) {
-        c[i].checked = checked;
-    }
-}
-
-function showVal(frm) {
-    var arr = [];
-    for (var i in frm.rohit) {
-        if (frm.rohit[i].checked) {
-            arr.push(frm.rohit[i].value);
-        }
-    }
-    alert(arr);
-    return arr;
-}
+createUI(allTasks);
